@@ -8,7 +8,7 @@ trait InsertionSort extends SortByStep {
     val lst: ListBuffer[A] = ListBuffer(list: _*)
     val key = list(iteration)
     var j = iteration - 1
-    while (j >= 0 && o.gt(lst(j), key)) { 
+    while (j >= 0 && o.gt(lst(j), key)) {
       lst(j + 1) = lst(j)
       j -= 1
     }
