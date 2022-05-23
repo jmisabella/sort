@@ -1,0 +1,224 @@
+body {
+  overflow: hidden;
+  width:100%;
+}
+
+body.light-mode {
+  background-color:#e9e9e9 !important;
+  color: #000;
+}
+body.light-mode .grid ul li ul li {
+  background-color: #9e9e9e!important;
+  color: #fff;
+}
+
+body.dark-mode {
+  background-color: #000 !important;
+  color: #cecece;
+}
+
+body.dark-mode .grid ul li ul li {
+  background-color: #222!important;
+  color: #cecece;
+}
+
+body.dark-mode button,
+body.dark-mode select {
+  background-color: #111 !important;
+  color: #cecece !important;
+}
+
+body.light-mode button#play-pause-button {
+  background-image: none;
+} 
+body.light-mode button#play-pause-button.play {
+  background: url("../images/play-ffffff.png"), #6c757d !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+} 
+body.light-mode button#play-pause-button.pause {
+  background: url("../images/pause-ffffff.png"), #6c757d !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+} 
+body.dark-mode button#play-pause-button {
+  background-image: none;
+} 
+body.dark-mode button#play-pause-button.play {
+  background: url("../images/play-cecece.png"), #111 !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+} 
+body.dark-mode button#play-pause-button.pause {
+  background: url("../images/pause-cecece.png"), #111 !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+} 
+
+body.dark-mode .grid ul li ul li.empty {
+  background-color: #000 !important;
+}
+
+body.light-mode .grid ul li ul li {
+  background-color: #fff!important;
+  color: #000;
+}
+
+body.light-mode .grid ul li ul li.empty {
+  background-color: #000 !important;
+}
+
+/* @media only screen and (orientation:portrait){
+  .controls select {
+    padding-left:110px !important;
+  }
+} */
+
+/* @viewport {  
+  orientation: portrait;  
+}  */
+
+div#outer-container {
+  text-align:center;
+  width:auto;
+  max-width: 1024px;
+}
+
+#top-panel {
+  width: 270px;
+  margin: auto;
+  text-align: center;
+  margin-left:45%;
+}
+
+#top-panel * {
+  margin: 7px; 
+  float: left;
+}
+
+#top-panel input[type="checkbox"] {
+  margin-top: 20px;
+  cursor: pointer;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: 0;
+  height: 16px;
+  width: 16px;
+  border: 1px solid white;
+  background: #000;
+  color: #000;
+}
+
+#top-panel input[type="checkbox"]:checked {
+  background: lightgray;
+  color: white;
+}
+
+div#remaining-count {
+  font-size:x-large;
+}
+
+.grid {
+  width: 100%;
+}
+
+.grid ul {
+  list-style-type: none;
+}
+
+.grid ul li ul li.empty {
+  background-color: #000;
+}
+.grid > li:first-child { visibility: hidden; }
+
+.grid ul li {
+  display: inline-block;
+}
+
+.grid ul li {
+  display: inline-block;
+}
+
+.grid ul li ul li {
+  float: left; 
+  background-color: #fff; 
+  display: block;
+  border: solid 1px #000;
+  padding: 9px;
+  min-width: 60px;
+  height: 60px;
+  font-size:x-large;
+}
+
+#remaining-moves {
+  visibility: hidden;
+  height:1px !important;
+  width: 1px !important;
+}
+
+#game-form select, 
+#game-form button {
+  float:left;
+  min-width: 100px;
+}
+
+.controls button, 
+.controls select {
+  width: 240px;
+  font-size: x-large;
+  text-align: center;
+  touch-action: manipulation;
+}
+
+/* mobile device specific rules */
+@media (max-width: 900px) {
+  .controls button, 
+  .controls select {
+    position: relative;
+    left: -110px;
+    width: 130%;
+  }
+
+  .controls select {
+    padding-left:110px !important;
+  }
+
+  #top-panel {
+    margin: auto !important;
+  }
+
+  .grid {
+    width: 100%;
+    position: relative;
+    /* left:-40px; */
+    left:-37px;
+  }
+
+}
+
+.controls button {
+  margin-left:5%;
+  min-height:110px;
+}
+.controls select {
+  min-height:80px;
+  margin:3% 2% 2% 5%;
+
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Chrome */
+  -webkit-appearance: none;
+}
+
+.controls {
+  text-align:center;
+  width:auto;
+  width:60%;
+  float: right;
+}
+
+.controls * {
+  text-align:center;
+  width:auto;
+}

@@ -1,0 +1,40 @@
+@()
+
+@main("Sort") {
+  <div id='outer-container'>
+    <div id="top-panel">
+      <input type="checkbox" id="dark-mode" />
+      <div id='remaining-count'></div>
+    <!-- <br class='clearfix' /> 
+    <br class='clearfix' /> 
+    <br class='clearfix' />  -->
+    </div>
+    <div class='controls'>
+      <select id='board-size' class='form-control btn-secondary'>
+        <option value=''>Algorithm</option>
+        <option value='bubble'>Bubble Sort</option>
+        <option value='heap'>Heap Sort</option>
+        <option value='insertion'>Insertion Sort</option>
+        <option value='merge'>Merge Sort</option>
+        <option value='selection'>Selection Sort</option>
+      </select>
+    </div> 
+    <br class='clearfix' /> 
+    <br class='clearfix' /> 
+    <br class='clearfix' /> 
+    <br class='clearfix' /> 
+    <br class='clearfix' /> 
+    <br class='clearfix' /> 
+    <br class='clearfix' /> 
+    <div id='outer-board'>
+      <div id='board' class='grid'></div>
+    </div> 
+    <form id='game-form'>
+      <div class='controls'>
+        <button id="play-pause-button" type="button" class="btn btn-secondary"></button>
+      </div> 
+    </form>
+    <div id='remaining-moves' ></div>
+  </div>
+
+}
