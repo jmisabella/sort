@@ -10,9 +10,9 @@ trait BubbleSort extends SortByStep {
       if (o.gt(lst(j), lst(j + 1))) {
         val a = lst(j+1)
         val b = lst(j)
-        lst(j) = a 
-        lst(j+1) = b 
-      }    
+        lst(j) = a
+        lst(j+1) = b
+      }
     }
     SortStepResult(lst.toList, iteration + 1)
   }
