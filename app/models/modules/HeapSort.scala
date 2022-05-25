@@ -1,5 +1,5 @@
 package models.modules
 
-import models.behaviors.HeapSorting
+import models.behaviors.{ HeapSorting, RandomOrdering }
 
-case object HeapSort extends HeapSorting
+case object HeapSort extends HeapSorting with RandomOrdering

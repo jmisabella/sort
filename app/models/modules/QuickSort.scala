@@ -1,5 +1,5 @@
 package models.modules
 
-import models.behaviors.QuickSorting
+import models.behaviors.{ QuickSorting, RandomOrdering }
 
-case object QuickSort extends QuickSorting
+case object QuickSort extends QuickSorting with RandomOrdering

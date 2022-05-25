@@ -1,5 +1,5 @@
 package models.modules
 
-import models.behaviors.SelectionSorting
+import models.behaviors.{ SelectionSorting, RandomOrdering }
 
-case object SelectionSort extends SelectionSorting
+case object SelectionSort extends SelectionSorting with RandomOrdering
