@@ -3,7 +3,7 @@ package models.behaviors
 import models.classes.{ HistoricalList, Heap, EmptyHeap, NonEmptyHeap }
 import scala.annotation.tailrec
 
-trait HeapSort extends Sort {
+trait HeapSorting extends Sorting {
 
   def merge[A](a: Heap[A], b: Heap[A], preserveSteps: Boolean = false)(implicit o: Ordering[A]): Heap[A] = {
     val result: Heap[A] = (a, b) match {

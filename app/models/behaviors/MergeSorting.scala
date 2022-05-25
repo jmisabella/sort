@@ -3,7 +3,7 @@ package models.behaviors
 import models.classes.HistoricalList
 import scala.annotation.tailrec
 
-trait MergeSort extends Sort {
+trait MergeSorting extends Sorting {
 
   @tailrec
   final def merge[A](seq1: HistoricalList[A], seq2: HistoricalList[A], acc: HistoricalList[A])(implicit o: Ordering[A]): HistoricalList[A] = { 

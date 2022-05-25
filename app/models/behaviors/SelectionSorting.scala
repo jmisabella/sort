@@ -3,7 +3,7 @@ package models.behaviors
 import models.classes.SortStepResult
 import scala.collection.mutable.ListBuffer
 
-trait SelectionSort extends SortByStep {
+trait SelectionSorting extends SortByStep {
   override def sortStep[A](list: List[A], iteration: Int = 0)(implicit o: Ordering[A]): SortStepResult[A] = {
     val lst: ListBuffer[A] = ListBuffer(list: _*)
     var minIndex: Int = iteration

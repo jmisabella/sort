@@ -2,7 +2,7 @@ package models.behaviors
 
 import models.classes.{ SortStepResult, HistoricalList }
 
-trait SortByStep extends Sort {
+trait SortByStep extends Sorting {
 
   def sortStep[A](list: List[A], iteration: Int = 0)(implicit o: Ordering[A]): SortStepResult[A]
 

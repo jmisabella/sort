@@ -30,9 +30,19 @@ $(document).ready(function() {
       // $('#board-size').val("");
       // $("#play-pause-button").text("Pause"); 
       $("#play-pause-button").removeClass("play"); 
-      $("#play-pause-button").addClass("pause"); 
-      window.clearInterval(nextMoveIntervalEvent); 
-      nextMoveIntervalEvent = window.setInterval(nextMove, interval); 
+      $("#play-pause-button").addClass("pause");
+
+      // create the message as json
+      let jsonMessage = {
+          message: opval 
+      };
+      // send our json message to the server
+      sendToServer(jsonMessage);
+
+      // window.clearInterval(nextMoveIntervalEvent); 
+      // nextMoveIntervalEvent = window.setInterval(nextMove, interval); 
+    
+      
     }
   });
 

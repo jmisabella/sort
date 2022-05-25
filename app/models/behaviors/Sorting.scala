@@ -2,7 +2,7 @@ package models.behaviors
 
 import models.classes.HistoricalList
 
-trait Sort {
+trait Sorting {
 
   def sort[A](list: List[A], preserveSteps: Boolean = false)(implicit o: Ordering[A]): HistoricalList[A]
 

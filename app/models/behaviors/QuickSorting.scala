@@ -4,7 +4,7 @@ import models.classes.HistoricalList
 import scala.language.postfixOps
 import scala.annotation.tailrec
 
-trait QuickSort extends Sort {
+trait QuickSorting extends Sorting {
 
   def quicksort[A](xs: HistoricalList[A])(implicit o: Ordering[A]): HistoricalList[A] = {
 

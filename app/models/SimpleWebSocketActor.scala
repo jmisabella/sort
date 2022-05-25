@@ -22,6 +22,10 @@ class SimpleWebSocketActor(clientActorRef: ActorRef) extends Actor {
         case jsValue: JsValue =>
             logger.info(s"JS-VALUE: $jsValue")
             val clientMessage = getMessage(jsValue)
+            println("MESSAGE: " + clientMessage)
+            
+
+
             val json: JsValue = Json.parse(s"""{"body": "You said, ‘$clientMessage’"}""")
             clientActorRef ! (json)
     }

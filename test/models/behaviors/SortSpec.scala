@@ -5,12 +5,12 @@ import org.scalatest.flatspec.AnyFlatSpec
 
 class SortSpec extends AnyFlatSpec {
 
-  case object selectionSort extends SelectionSort
-  case object bubbleSort extends BubbleSort
-  case object insertionSort extends InsertionSort
-  case object heapSort extends HeapSort
-  case object mergeSort extends MergeSort
-  case object quickSort extends QuickSort
+  case object selectionSort extends SelectionSorting
+  case object bubbleSort extends BubbleSorting
+  case object insertionSort extends InsertionSorting
+  case object heapSort extends HeapSorting
+  case object mergeSort extends MergeSorting
+  case object quickSort extends QuickSorting
 
   "SelectionSort" should "consider empty list already sorted" in {
     val lst: List[Int] = Nil
