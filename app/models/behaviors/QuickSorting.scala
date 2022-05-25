@@ -20,10 +20,8 @@ trait QuickSorting extends Sorting {
               val (ls, rs): (List[A], List[A]) = (xrest partition(o.lt(x,_)))
                 if (ls.isEmpty) {
                   if (rs.isEmpty)
-                    // qsort(rest, HistoricalList(x :: done.currentStep, List(x :: done.currentStep) ++ done.previousSteps))
                     qsort(rest, HistoricalList(x :: done.currentStep, done))
                   else 
-                    // qsort(List(HistoricalList(rs)) ++ rest, HistoricalList(x :: done.currentStep, List(x :: done.currentStep) ++ done.previousSteps))
                     qsort(List(HistoricalList(rs)) ++ rest, HistoricalList(x :: done.currentStep, done))
                 }
                 else 
