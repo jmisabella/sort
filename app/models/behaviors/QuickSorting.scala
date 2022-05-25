@@ -34,7 +34,7 @@ trait QuickSorting extends Sorting {
     qsort(List(xs), HistoricalList(Nil))
   }
   
-  override def sort[A](list: List[A], preserveSteps: Boolean)(implicit o: Ordering[A]): HistoricalList[A] = { 
+  override def sort[A](list: List[A])(implicit o: Ordering[A]): HistoricalList[A] = { 
     quicksort(HistoricalList(list)).copy(original = list)
   }
 }

@@ -16,7 +16,7 @@ trait MergeSorting extends Sorting {
     }
   }
 
-  def mergeSort[A](seq: HistoricalList[A], preserveSteps: Boolean = false)(implicit o: Ordering[A]): HistoricalList[A] = seq.currentStep match {
+  def mergeSort[A](seq: HistoricalList[A])(implicit o: Ordering[A]): HistoricalList[A] = seq.currentStep match {
     case Nil => seq
     case xs::Nil => seq
     case _ => 
@@ -24,7 +24,7 @@ trait MergeSorting extends Sorting {
       merge(mergeSort(HistoricalList[A](left)), mergeSort(HistoricalList(right)), HistoricalList(Nil))
   }
 
-  override def sort[A](list: List[A], preserveSteps: Boolean)(implicit o: Ordering[A]): HistoricalList[A] = { 
-    mergeSort(HistoricalList(list), preserveSteps).copy(original = list)
+  override def sort[A](list: List[A])(implicit o: Ordering[A]): HistoricalList[A] = { 
+    mergeSort(HistoricalList(list)).copy(original = list)
   }
 }
