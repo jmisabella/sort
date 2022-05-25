@@ -15,5 +15,4 @@ trait SortByStep extends Sorting {
     }
     HistoricalList(steps, list)
   }
-
 }
