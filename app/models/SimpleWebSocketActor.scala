@@ -1,5 +1,9 @@
 package models
 
+import models.behaviors.{ Sorting, RandomOrdering } 
+import models.classes.HistoricalList
+import models.modules.Factory
+
 import akka.actor._
 import play.api.libs.json._
 import play.api.libs.json.Json
@@ -21,12 +25,12 @@ class SimpleWebSocketActor(clientActorRef: ActorRef) extends Actor {
     def receive = {
         case jsValue: JsValue =>
             logger.info(s"JS-VALUE: $jsValue")
-            val clientMessage = getMessage(jsValue)
+            val clientMessage = getMessage(jsValue).trim()
             println("MESSAGE: " + clientMessage)
-            
 
+            val result: HistoricalList[Int] = Factory.run(clientMessage, (0 to 242).toList)
 
-            val json: JsValue = Json.parse(s"""{"body": "You said, ‘$clientMessage’"}""")
+            val json: JsValue = Json.parse(s"""{"result": "${result.history.mkString("[", ", ", "]")}"}""")
             clientActorRef ! (json)
     }
 

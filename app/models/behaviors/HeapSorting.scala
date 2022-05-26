@@ -5,8 +5,11 @@ import scala.annotation.tailrec
 
 trait HeapSorting extends Sorting {
 
-  def merge[A](a: Heap[A], b: Heap[A])(implicit o: Ordering[A]): Heap[A] = {
+  // BAD because it's not tail recursive!! We need to find a better solution...
+  // @tailrec
+  final def merge[A](a: Heap[A], b: Heap[A])(implicit o: Ordering[A]): Heap[A] = {
     val result: Heap[A] = (a, b) match {
+    // (a, b) match {
       case (x: Heap[A], EmptyHeap(_, _)) => x
       case (EmptyHeap(_, _), x) => x
       case (x: NonEmptyHeap[A], y: NonEmptyHeap[A]) =>
