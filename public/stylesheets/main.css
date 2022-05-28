@@ -180,9 +180,9 @@ div#remaining-count {
     width: 130%;
   }
 
-  .controls select {
+  /* .controls select {
     padding-left:110px !important;
-  }
+  } */
 
   #top-panel {
     margin: auto !important;
