@@ -21,5 +21,4 @@ case object Factory {
     case s if (s == SELECTION) => selectionSort.sort(selectionSort.shuffle(lst)._1)
     case s => throw new IllegalArgumentException(s"Unexpected SortingAlgorithm [$s]") 
   }
-    
 }

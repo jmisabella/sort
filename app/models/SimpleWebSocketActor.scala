@@ -30,7 +30,9 @@ class SimpleWebSocketActor(clientActorRef: ActorRef) extends Actor {
 
             val result: HistoricalList[Int] = Factory.run(clientMessage, (0 to 242).toList)
 
-            val json: JsValue = Json.parse(s"""{"result": "${result.history.mkString("[", ", ", "]")}"}""")
+            // // val json: JsValue = Json.parse(s"""{"result": "${result.history.mkString("[", ", ", "]")}"}""")
+            // val json: JsValue = Json.parse(s"""{"body": "${result.history.map(_.mkString(",")).mkString("|")}"}""")
+            val json: JsValue = Json.parse(s"""{"body": "${result.toString()}"}""")
             clientActorRef ! (json)
     }
 
