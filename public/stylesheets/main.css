@@ -183,6 +183,11 @@ div#remaining-count {
   /* .controls select {
     padding-left:110px !important;
   } */
+  
+  .controls select {
+    /* padding-left:110px !important; */
+    text-align: center !important;
+  }
 
   #top-panel {
     margin: auto !important;
