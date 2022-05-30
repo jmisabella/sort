@@ -28,7 +28,7 @@ $(document).ready(function() {
       console.log("Sending ...");
       sendInitToServer();
       // $('#board-size').val("");
-      $("#play-pause-button").text("Pause"); 
+      // $("#play-pause-button").text("Pause"); 
       $("#play-pause-button").removeClass("play"); 
       $("#play-pause-button").addClass("pause");
 
