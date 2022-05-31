@@ -72,7 +72,7 @@ body.light-mode .grid ul li ul li.empty {
   transition: transform .2s;
 }
 #board:hover {
-  transform: scale(1.75);
+  transform: scale(1.40);
 }
 
 /* @media only screen and (orientation:portrait){
