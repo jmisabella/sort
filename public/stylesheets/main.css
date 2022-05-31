@@ -68,6 +68,13 @@ body.light-mode .grid ul li ul li.empty {
   background-color: #000 !important;
 }
 
+#board {
+  transition: transform .2s;
+}
+#board:hover {
+  transform: scale(1.75);
+}
+
 /* @media only screen and (orientation:portrait){
   .controls select {
     padding-left:110px !important;
