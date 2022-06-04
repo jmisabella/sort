@@ -70,6 +70,18 @@ body.light-mode .grid ul li ul li.empty {
 
 #board {
   transition: transform .2s;
+
+  /* text-align:center;
+  margin: auto;
+  margin-left:300px; */
+  /* text-align:center; */
+  /* margin: auto; */
+  /* margin: 5% 60% 5% 300px; */
+  /* margin: 5% 25% 5% 25%; */
+  /* width: 600px; */
+  /* width: 400px; */
+
+
 }
 #board:hover {
   transform: scale(1.40);
