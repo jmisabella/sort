@@ -1,6 +1,6 @@
 package models.behaviors
 
-import models.classes.{ SortStepResult, HistoricalList, Heap }
+import models.classes.{ SortStepResult, HistoricalList }
 import org.scalatest.flatspec.AnyFlatSpec
 
 class SortSpec extends AnyFlatSpec {
@@ -218,9 +218,10 @@ class SortSpec extends AnyFlatSpec {
     val lst: List[Int] = Nil
     val results: HistoricalList[Int] = heapSort.sort(lst)
     val (sorted, passes): (List[Int], Int) = (results.currentStep, results.history.length)
-    assert(passes == 0, s"Expected [0], actual [$passes]")
+    assert(passes == 1, s"Expected [1], actual [$passes]")
     println("HEAP SORT") 
     println(results)
+    println("SORTED: " + results.currentStep.mkString(", "))
     println("ORIGINAL: " + results.original.mkString(", "))
   }
 
@@ -228,9 +229,10 @@ class SortSpec extends AnyFlatSpec {
     val lst: List[Int] = List(55) 
     val results: HistoricalList[Int] = heapSort.sort(lst)//(Heap.ordering[Int])
     val (sorted, passes): (List[Int], Int) = (results.currentStep, results.history.length)
-    // assert(passes == 0, s"Expected [0], actual [$passes]")
+    assert(passes == 1, s"Expected [1], actual [$passes]")
     println("HEAP SORT") 
     println(results)
+    println("SORTED: " + results.currentStep.mkString(", "))
     println("ORIGINAL: " + results.original.mkString(", "))
   }
 
@@ -239,19 +241,21 @@ class SortSpec extends AnyFlatSpec {
     val results: HistoricalList[Int] = heapSort.sort(lst)//(Heap.ordering[Int])
     val (sorted, passes): (List[Int], Int) = (results.currentStep, results.history.length)
     assert(heapSort.isSorted(results.currentStep))
-    // assert(passes == 1, s"Expected [1], actual [$passes]")
+    assert(passes == 1, s"Expected [1], actual [$passes]")
     println("HEAP SORT") 
     println(results)
+    println("SORTED: " + results.currentStep.mkString(", "))
     println("ORIGINAL: " + results.original.mkString(", "))
   }
 
-  it should "sort [2, 1, 3] in 4 passes" in {
+  it should "sort [2, 1, 3] in 3 passes" in {
     val lst: List[Int] = List(2, 1, 3) 
     val results: HistoricalList[Int] = heapSort.sort(lst)//(Heap.ordering[Int])
     assert(heapSort.isSorted(results.currentStep))
-    assert(results.history.length == 4, s"Expected [4], actual [${results.history.length}]")
+    assert(results.history.length == 3, s"Expected [3], actual [${results.history.length}]")
     println("HEAP SORT") 
     println(results)
+    println("SORTED: " + results.currentStep.mkString(", "))
     println("ORIGINAL: " + results.original.mkString(", "))
   }
 
@@ -263,17 +267,19 @@ class SortSpec extends AnyFlatSpec {
     assert(results.history.length == 5, s"Expected [5], actual [${results.history.length}]")
     println("HEAP SORT") 
     println(results)
+    println("SORTED: " + results.currentStep.mkString(", "))
     println("ORIGINAL: " + results.original.mkString(", "))
   }
 
-  it should "sort [4, 10, 3, 5, 1] in 7 passes" in {
+  it should "sort [4, 10, 3, 5, 1] in 5 passes" in {
     val lst: List[Int] = List(4, 10, 3, 5, 1)
     val results: HistoricalList[Int] = heapSort.sort(lst)
     println("RESULT: " + results.currentStep)
     assert(heapSort.isSorted(results.currentStep))
-    assert(results.history.length == 7, s"Expected [7], actual [${results.history.length}]")
+    assert(results.history.length == 5, s"Expected [5], actual [${results.history.length}]")
     println("HEAP SORT") 
     println(results)
+    println("SORTED: " + results.currentStep.mkString(", "))
     println("ORIGINAL: " + results.original.mkString(", "))
   }
 
