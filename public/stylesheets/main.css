@@ -136,6 +136,7 @@ div#outer-container {
 
 div#remaining-count {
   font-size:x-large;
+  visibility:hidden;
 }
 
 .grid {

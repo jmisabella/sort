@@ -39,12 +39,15 @@ trait HeapSorting extends Sorting {
       if (childrenOfI nonEmpty) {
         val biggestChild = childrenOfI max indexOrdering
         if (a(i) < a(biggestChild)) {
+          // history.addOne(a.toList)
           swap(i, biggestChild)
           siftDown(biggestChild, heapSize)
         }
+      } else {
+        history.addOne(a.toList)
       }
     }
-  
+
     // Prepare heap by sifting down all non-leaf elements
     for (i <- a.indices.reverse drop numberOfLeaves(a.size)) siftDown(i, a.size)
   
@@ -56,7 +59,7 @@ trait HeapSorting extends Sorting {
       history.addOne(a.toList)
     }
 
-    HistoricalList(history.toList, list)
+    HistoricalList(history.toList.distinct, list)
   }
 
 }

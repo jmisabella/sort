@@ -9,6 +9,7 @@ $(document).ready(function() {
   $('#board-size').change(function() {
     var opval = $(this).val();
     if (opval != '') {
+      firstMove = true;
       console.log("Sending ...");
       sendInitToServer();
       // $('#board-size').val("");
@@ -39,41 +40,26 @@ $(document).ready(function() {
       // send our json message to the server
       sendToServer(jsonMessage);
 
-      window.clearInterval(nextMoveIntervalEvent); 
+      // // wait 3 seconds 
+      // let now = Date.now(),
+      // end = now + 3000;
+      // while (now < end) { now = Date.now(); }
+
+      window.clearInterval(nextMoveIntervalEvent);
       nextMoveIntervalEvent = window.setInterval(nextMove, interval); 
     
       
     }
   });
 
-  // $('#board-size').click(function() {
-  //   if ( $(this).data('clicks') == 1 ) {
-  //     // Trigger here your function:    
-  //     console.log('Selected Option: ' + $(this).val() );
-  //     $(this).data('clicks', 0);
-  //     var opval = $(this).val();
-  //     if (opval != '') {
-  //       console.log("Sending ...");
-  //       sendInitToServer();
-  //       $('#board-size').val("");
-  //     }
-  //   } else {
-  //     console.log('first click');
-  //     $(this).data('clicks', 1);
-  //   }
-  // });
-
-  // $('#board-size').focusout( function() {
-  //   $(this).data('clicks', 0);
-  // });
 });
 
 function wait(ms){
-var start = new Date().getTime();
-var end = start;
-while(end < start + ms) {
-  end = new Date().getTime();
-}
+  var start = new Date().getTime();
+  var end = start;
+  while(end < start + ms) {
+    end = new Date().getTime();
+  }
 }
 
 var webSocket;
@@ -109,6 +95,10 @@ function displayList(list) {
     $("#" + divId).removeClass();
     $("#" + divId).addClass(divClass);
   }
+  // if (firstMove) {
+  //   wait(2500); // wait 2.5 seconds after displaying first list in order to allow it to render
+  //   firstMove = false;
+  // }
 }
 
 function onOpen(event) {
@@ -171,7 +161,10 @@ $("#board").click(function (e) {
   nextMove();
 });
 
-var interval = 220;
+// var interval = 220;
+// var interval = 55;
+var interval = 35;
+// var interval = 15;
 var nextMoveIntervalEvent = window.setInterval(nextMove, interval);
 
 // continue to step while user presses the any key
@@ -237,54 +230,6 @@ function sendToServer(jsonMessage) {
   }
 }
 
-// // Convert a given string such as: ((1,2,3),(4,5,6),(7,8,*))
-// // into markup as an unordered list
-// function boardMarkup(b, gridSize) {
-//   // alert("BOARD: " + b);
-//   var board = b.replace(' ', '');
-//   var markup = '<ul><li>';
-//   for (var i = 0; i < board.length; i++) {
-//     if (i % gridSize == 0) {
-//       markup += '</li><li>';
-//     }
-//     var curr = board.charAt(i);
-//     var next = ''; // next is to look ahead for * so we know to use special css class on its li element
-//     if ((i + 1) < board.length) {
-//       next = board.charAt(i + 1)
-//     }
-//     if (next == '*') {
-//       if (curr == '(') {
-//         markup += "<ul><li class='empty'>";
-//       } else if (curr == ')') {
-//         markup += "</li></ul>";
-//       } else if (curr == ',') {
-//         markup += "</li><li class='empty'>";
-//       } else {
-//         if (curr == "*") {
-//           markup += " ";
-//         } else {
-//           markup += curr
-//         }
-//       }
-//     } else {
-//       if (curr == '(') {
-//         markup += "<ul><li>";
-//       } else if (curr == ')') {
-//         markup += "</li></ul>";
-//       } else if (curr == ',') {
-//         markup += "</li><li>";
-//       } else {
-//         if (curr == "*") {
-//           markup += " ";
-//         } else {
-//           markup += curr
-//         }
-//       }
-//     }
-//   }
-//   markup += '</li></ul>';
-//   return markup;
-// }
 
 function head(lst) {
   return lst[0];
@@ -305,15 +250,17 @@ function concatenate(lst, delimiter) {
   return result;
 }
 
+var firstMove = false;
+
 function nextMove() {
   var moves = $('#remaining-moves').text().split('|')
   var curr = head(moves);
   var remaining = tail(moves);
   var remainingCount = remaining.length;
   if ($('#remaining-moves').text() != 'remaining: 0' && $('#remaining-moves').text() != '') {
-    // $('#board').html(boardMarkup(curr)); // TODO: remove this line after we map each list item to a css class
 
     displayList(curr.split(','));
+
 
     $('#remaining-moves').text(concatenate(remaining, '|'));
     $('#remaining-count').text('remaining: ' + remainingCount)
