@@ -70,6 +70,9 @@ body.light-mode .grid ul li ul li.empty {
 
 #board {
   transition: transform .2s;
+  transform: scale(1.40);
+
+  float:left;
 
   /* text-align:center;
   margin: auto;
@@ -183,9 +186,17 @@ div#remaining-count {
   min-width: 100px;
 }
 
-.controls button, 
-.controls select {
+.top-controls select {
+  width: 180px;
+  float: left;
+}
+
+.controls button {
   width: 240px;
+}
+
+.controls button, 
+.top-controls select {
   font-size: x-large;
   text-align: center;
   touch-action: manipulation;
@@ -193,19 +204,18 @@ div#remaining-count {
 
 /* mobile device specific rules */
 @media (max-width: 900px) {
-  .controls button, 
-  .controls select {
+  .controls button {
     position: relative;
     left: -110px;
     width: 130%;
-  }
-
-  /* .controls select {
-    padding-left:110px !important;
-  } */
   
-  .controls select {
-    /* padding-left:110px !important; */
+    margin: 5% 0 0 5%;
+    /* margin-left:5%; */
+    /* min-height:110px; */
+  
+  }
+  
+  .top-controls select {
     text-align: center !important;
   }
 
@@ -222,20 +232,6 @@ div#remaining-count {
 
 }
 
-.controls button {
-  margin-left:5%;
-  min-height:110px;
-}
-.controls select {
-  min-height:80px;
-  margin:3% 2% 2% 5%;
-
-  /* for Firefox */
-  -moz-appearance: none;
-  /* for Chrome */
-  -webkit-appearance: none;
-}
-
 .controls {
   text-align:center;
   width:auto;
@@ -247,6 +243,22 @@ div#remaining-count {
   text-align:center;
   width:auto;
 }
+
+.controls button {
+  margin: 5% 0 0 5%;
+  /* margin-left:5%; */
+  min-height:110px;
+}
+.top-controls select {
+  /* min-height:80px; */
+  margin:3% 2% 2% 5%;
+
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Chrome */
+  -webkit-appearance: none;
+}
+
 
 .display {
   font-size: 0;
