@@ -7,7 +7,6 @@ import scala.util.Random // used only for default initialization when a seed is 
 trait RandomOrdering {
   // https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
   // Fisher-Yates shuffle
-  // TODO: test
   def shuffle[A](list: List[A], seed: Int = Random.nextInt()): (List[A], RNG) = {
     val lst: ListBuffer[A] = ListBuffer(list: _*)
     var random: RNG = RNG.RandomSeed(seed)

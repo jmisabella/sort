@@ -261,7 +261,6 @@ function nextMove() {
 
     displayList(curr.split(','));
 
-
     $('#remaining-moves').text(concatenate(remaining, '|'));
     $('#remaining-count').text('remaining: ' + remainingCount)
     if (remainingCount == 0) {
@@ -272,5 +271,7 @@ function nextMove() {
       nextMoveIntervalEvent = window.setInterval(nextMove, interval); 
     }
   }
+
 }
+
 

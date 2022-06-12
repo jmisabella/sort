@@ -12,13 +12,13 @@ case object Factory {
   private case object quickSort extends QuickSorting with RandomOrdering
   private case object selectionSort extends SelectionSorting with RandomOrdering
 
-  def run[A](input: String, lst: List[A])(implicit o: Ordering[A]): HistoricalList[A] = SortingAlgorithm(input) match {
-    case s if (s == BUBBLE) => bubbleSort.sort(bubbleSort.shuffle(lst)._1)
-    case s if (s == HEAP) => heapSort.sort(heapSort.shuffle(lst)._1)
-    case s if (s == INSERTION) => insertionSort.sort(insertionSort.shuffle(lst)._1)
-    case s if (s == MERGE) => mergeSort.sort(mergeSort.shuffle(lst)._1)
-    case s if (s == QUICK) => quickSort.sort(quickSort.shuffle(lst)._1)
-    case s if (s == SELECTION) => selectionSort.sort(selectionSort.shuffle(lst)._1)
+  def run[A](algorithm: String, lst: List[A])(implicit o: Ordering[A]): HistoricalList[A] = SortingAlgorithm(algorithm) match {
+    case BUBBLE => bubbleSort.sort(bubbleSort.shuffle(lst)._1)
+    case HEAP => heapSort.sort(heapSort.shuffle(lst)._1)
+    case INSERTION => insertionSort.sort(insertionSort.shuffle(lst)._1)
+    case MERGE => mergeSort.sort(mergeSort.shuffle(lst)._1)
+    case QUICK => quickSort.sort(quickSort.shuffle(lst)._1)
+    case SELECTION => selectionSort.sort(selectionSort.shuffle(lst)._1)
     case s => throw new IllegalArgumentException(s"Unexpected SortingAlgorithm [$s]") 
   }
 }

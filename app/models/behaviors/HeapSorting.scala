@@ -14,10 +14,10 @@ trait HeapSorting extends Sorting {
 
   def heapSort[A](list: List[A])(implicit ord: Ordering[A]): HistoricalList[A] = {
     import ord._
-    val a: ListBuffer[A] = ListBuffer(list: _*)
+    val lst: ListBuffer[A] = ListBuffer(list: _*)
     val history: ListBuffer[List[A]] = ListBuffer()
 
-    val indexOrdering = Ordering by a.apply
+    val indexOrdering = Ordering by lst.apply
   
     def numberOfLeaves(heapSize: Int): Int = (heapSize + 1) / 2
   
@@ -27,9 +27,9 @@ trait HeapSorting extends Sorting {
     }
   
     def swap(i: Int, j: Int): Unit = {
-      val tmp = a(i)
-      a(i) = a(j)
-      a(j) = tmp
+      val tmp = lst(i)
+      lst(i) = lst(j)
+      lst(j) = tmp
     }
 
     // Maintain partial ordering by bubbling down elements
@@ -38,28 +38,26 @@ trait HeapSorting extends Sorting {
       val childrenOfI = children(i, heapSize)
       if (childrenOfI nonEmpty) {
         val biggestChild = childrenOfI max indexOrdering
-        if (a(i) < a(biggestChild)) {
-          // history.addOne(a.toList)
+        if (lst(i) < lst(biggestChild)) {
+          // history.addOne(lst.toList)
           swap(i, biggestChild)
           siftDown(biggestChild, heapSize)
         }
       } else {
-        history.addOne(a.toList)
+        history.addOne(lst.toList)
       }
     }
 
     // Prepare heap by sifting down all non-leaf elements
-    for (i <- a.indices.reverse drop numberOfLeaves(a.size)) siftDown(i, a.size)
+    for (i <- lst.indices.reverse drop numberOfLeaves(lst.size)) siftDown(i, lst.size)
   
     // Sort from the end of the array forward, by swapping the highest element,
     // which is always the top of the heap, to the end of the unsorted array
-    for (i <- a.indices.reverse) {
+    for (i <- lst.indices.reverse) {
       swap(0, i)
       siftDown(0, i)
-      history.addOne(a.toList)
+      history.addOne(lst.toList)
     }
-
     HistoricalList(history.toList.distinct, list)
   }
-
 }

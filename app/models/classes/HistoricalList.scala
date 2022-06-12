@@ -10,15 +10,11 @@ case class HistoricalList[A](history: List[List[A]], original: Seq[A] = Nil) {
   override def toString(): String = {
     previousSteps.map(xs => 
       if (xs.length == original.length) {
-        // println("BOTH LENGTH: " + xs.length)
         xs.mkString("[", ", ", "]")
       } else {
-        // println("XS LENGTH: " + xs.length)
-        // println("ORIGINAL LENGTH: " + original.length)
         xs.concat(original.diff(xs)).mkString("[", ", ", "]")
       }
       ).mkString("|")
-      // ).mkString("\r\n")
   }
 }
 object HistoricalList {
